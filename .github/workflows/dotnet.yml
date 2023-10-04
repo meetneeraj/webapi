@@ -46,8 +46,8 @@ jobs:
           source-url: https://nuget.pkg.github.com/meetneeraj/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release webapi
+      - run: dotnet build --configuration Release webapi/webapi.csproj
       - name: Create the package
-        run: dotnet pack --configuration Release webapi
+        run: dotnet pack --configuration Release webapi/webapi.csproj
       - name: Publish the package to GPR
         run: dotnet nuget push webapi/bin/Release/*.nupkg
